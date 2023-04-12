@@ -20,7 +20,13 @@ type authorizationServer struct{}
 func (a *authorizationServer) Check(ctx context.Context, req *auth.CheckRequest) (*auth.CheckResponse, error) {
 	headers := req.GetAttributes().GetRequest().GetHttp().GetHeaders()
 	authHeader := headers["authorization"]
-	fmt.Printf("authHeader: %v", authHeader)
+	userDN := headers["user_dn"]
+	bar := headers["bar"]
+	fmt.Printf("authtoken in header: %v", authHeader)
+	fmt.Println("\n==============")
+	fmt.Printf("userDN in header: %v", userDN)
+	fmt.Println("\n==============")
+	fmt.Printf("Bar in header: %v", bar)
 	fmt.Println("\n==============")
 
 	var splitToken []string

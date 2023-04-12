@@ -25,7 +25,7 @@ func main() {
 	request := &pb.HelloRequest{Name: "brian"}
 	fmt.Printf("3\n")
 
-	ctx := metadata.AppendToOutgoingContext(context.Background(), "Authorization", "Bearer foo", "Bar", "baz")
+	ctx := metadata.AppendToOutgoingContext(context.Background(), "Authorization", "Bearer foo", "Bar", "baz", "user_dn", "cn=fred,ou=simon")
 	fmt.Printf("4\n")
 
 	resp, err := client.Hello(ctx, request)
